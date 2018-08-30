@@ -1,0 +1,18 @@
+language: rust
+branches:
+  only:
+  - master
+  - dev
+
+rust:
+  - stable
+  - nightly
+
+env:
+  global:
+  - RUST_BACKTRACE=1
+
+script:
+- cargo build --verbose --all
+- cargo test --verbose --all
+- for example in examples/*; do ex="$(basename $example)"; cargo run --example "${ex%.rs}"; done
