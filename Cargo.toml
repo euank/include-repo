@@ -9,4 +9,4 @@ repository = "https://github.com/euank/include-repo"
 
 [dependencies]
 proc-macro-hack = "0.4.0"
-include-repo-impl = { path = "./include-repo-impl" }
+include-repo-impl = "0.1.0"
