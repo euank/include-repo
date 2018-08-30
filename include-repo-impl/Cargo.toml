@@ -3,7 +3,7 @@ name = "include-repo-impl"
 version = "0.1.0"
 authors = ["Euan Kemp <euank@euank.com>"]
 license = "AGPL-3.0-only"
-description = "This crate implements the 'include_repo!' macro for easy AGPL compliance! Include a tarball as a const in your code!"
+description = "This is the internal impl crate for the include-repo; please do not use this one directly"
 homepage = "https://github.com/euank/include-repo"
 repository = "https://github.com/euank/include-repo"
 
