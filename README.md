@@ -33,11 +33,13 @@ If you don't wish to include quite every file, that's fine too. For example, if 
 #[macro_use]
 extern crate include_repo;
 
-include_repo!(SOURCE_CODE, ":!/img/", ":!/third_party");
+include_repo!(SOURCE_CODE, ".", ":!/img/", ":!/third_party");
 // Any valid pathspec (see
 // https://git-scm.com/docs/gitglossary#gitglossary-aiddefpathspecapathspec) may
 // be used. Pathspecs *must* be string literals. Any number may be provided to
 // the macro.
+// The "." portion is optional on newer versions of git, but for backwards
+// compatibility it's best to add it if all other pathspecs are exclusions.
 ```
 
 ## Assumptions

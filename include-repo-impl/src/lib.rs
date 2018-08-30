@@ -26,14 +26,17 @@ fn repo_tarball(filter: &Vec<String>) -> Vec<u8> {
         .current_dir(toplevel_dir)
         .arg("archive")
         .arg("HEAD")
-        .arg("--")
-        .arg(".");
+        .arg("--");
     for f in filter {
         archive.arg(f);
     }
     let output = archive
         .output()
         .expect("could not run 'git archive HEAD' for repo_tarball");
+
+    if !output.status.success() {
+        panic!("[include-repo]: error running git-archive: Exit {}: {}", output.status, String::from_utf8_lossy(&output.stderr));
+    }
     output.stdout
 }
 
@@ -54,11 +57,11 @@ fn parse_input(input: &str) -> (String, Vec<String>) {
             Expr::Lit(lit) => match lit.lit {
                 Lit::Str(ref s) => return s.value(),
                 _ => {
-                    panic!("git filters must be string literals");
+                    panic!("[include-repo] git filters must be string literals");
                 }
             },
             _ => {
-                panic!("git filters must be string literals");
+                panic!("[include-repo] git filters must be string literals");
             }
         }).collect();
 
