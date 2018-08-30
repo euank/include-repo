@@ -1,7 +1,8 @@
 # include-repo
 
-This rust crate implements a macro which embeds the entire git repository the
-code resides in into the built executable.
+This rust crate implements a macro which embeds all files in the project's git
+repository into the final executable. It does not embed git history nor
+metadata, but rather includes a tarball much like `git archive` would produce.
 
 Why might you want this? Well, the primary use-case I can think of (and in fact
 what I built it for) is to provide an
