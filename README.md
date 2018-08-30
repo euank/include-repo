@@ -22,6 +22,7 @@ extern crate include_repo;
 include_repo!(SOURCE_CODE);
 // Expands to:
 // const SOURCE_CODE: [u8; 999] = [128, 80, ...];
+// The bag of bytes is a tarball, so serve it with a .tar extension please!
 
 // Do whatever you want with 'SOURCE_CODE'; hint, you may wish to use
 // `&SOURCE_CODE[..]` since most fnctions don't take fixed-size arrays of exactly
@@ -48,6 +49,7 @@ include_repo!(SOURCE_CODE, ".", ":!/img/", ":!/third_party");
 The following assumptions must be true for this crate to work correctly:
 
 * You use `git` for version control and have a modern version of `git` on your path
+* You want to provide your source code as a tarball (optionally gzipped), not a zip or something
 * You want your code embedded as a giant const in your binary (not e.g. a static file on disk)
 * You're okay transitively depending on [proc-macro-hack](https://github.com/dtolnay/proc-macro-hack)
 
