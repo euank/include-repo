@@ -44,6 +44,8 @@ include_repo!(SOURCE_CODE, ".", ":!/img/", ":!/third_party");
 // compatibility it's best to add it if all other pathspecs are exclusions.
 ```
 
+If you want the contents to be gzipped, use `include_repo_gz!` instead. If you don't already have gzip decompression included in your binary, you may find it easier to shell out to `tar -xzv -f -` when the source is requested.
+
 ## Assumptions
 
 The following assumptions must be true for this crate to work correctly:
