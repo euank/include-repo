@@ -4,7 +4,7 @@ extern crate include_repo;
 use std::io::Write;
 
 // A pathspec may be used to include only a subset of the git repo's files
-include_repo!(REPO_CARGO_TOML_TAR, "Cargo.toml");
+const REPO_CARGO_TOML_TAR: &[u8] = include_repo!("Cargo.toml");
 
 fn main() {
     let mut cmd = std::process::Command::new("tar");

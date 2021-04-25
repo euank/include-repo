@@ -8,5 +8,9 @@ homepage = "https://github.com/euank/include-repo"
 repository = "https://github.com/euank/include-repo"
 
 [dependencies]
-proc-macro-hack = "0.4.0"
 include-repo-impl = "0.1.0"
+libflate = "1.1.0"
+syn = { version = "1.0.70", features = [ "extra-traits" ]}
+
+[lib]
+proc-macro = true
