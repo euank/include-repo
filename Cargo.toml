@@ -6,6 +6,7 @@ license = "AGPL-3.0-only"
 description = "This crate implements the 'include_repo!' macro for easy AGPL compliance! Include a tarball as a const in your code!"
 homepage = "https://github.com/euank/include-repo"
 repository = "https://github.com/euank/include-repo"
+edition = "2018"
 
 [dependencies]
 include-repo-impl = "0.1.0"
