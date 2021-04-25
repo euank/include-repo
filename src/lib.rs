@@ -1,14 +1,10 @@
-extern crate libflate;
-extern crate proc_macro;
-extern crate syn;
-
 use std::io::Write;
 
 use libflate::gzip::Encoder;
 use proc_macro::TokenStream;
 use syn::parse_macro_input;
 
-fn repo_tarball(filter: &Vec<String>) -> Vec<u8> {
+fn repo_tarball(filter: &[String]) -> Vec<u8> {
     // in an ideal world, this would probably be implemented with git2-rs or such.
     // In my world, it's a lot easier to just do this, and this is a bit of a hack in the first
     // place.
