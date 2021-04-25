@@ -17,17 +17,12 @@ built into the binary.
 This crate is easy to use. Simply include the following in your code somewhere:
 
 ```rust
-#[macro_use]
-extern crate include_repo;
+use include:repo::include_repo;
 
-include_repo!(SOURCE_CODE);
+const SOURCE_CODE: &[u8] = include_repo!();
 // Expands to:
-// const SOURCE_CODE: [u8; 999] = [128, 80, ...];
+// const SOURCE_CODE: &[u8] = [128, 80, ...];
 // The bag of bytes is a tarball, so serve it with a .tar extension please!
-
-// Do whatever you want with 'SOURCE_CODE'; hint, you may wish to reference the
-// const as `&SOURCE_CODE[..]` since most functions don't take fixed-size
-// arrays.
 ```
 
 If you don't wish to include quite every file, that's also possible. For
@@ -35,10 +30,9 @@ example, if you don't want to include contents in your 'img' and 'third\_party'
 folders, that can be done like so:
 
 ```rust
-#[macro_use]
-extern crate include_repo;
+use include:repo::include_repo;
 
-include_repo!(SOURCE_CODE, ".", ":!/img/", ":!/third_party");
+const SOURCE_CODE: &[u8] = include_repo!(".", ":!/img/", ":!/third_party");
 // Any valid pathspec (see
 // https://git-scm.com/docs/gitglossary#gitglossary-aiddefpathspecapathspec) may
 // be used. Pathspecs *must* be string literals. Any number may be provided to
@@ -56,7 +50,7 @@ The following assumptions must be true for this crate to work correctly:
 * You use `git` for version control and have a modern version of `git` in your `PATH`
 * You want to provide your source code as a tarball (optionally gzipped), not a zip or something
 * You want your code embedded as a giant const in your binary (not e.g. a static file on disk)
-* You're okay transitively depending on [proc-macro-hack](https://github.com/dtolnay/proc-macro-hack)
+* You don't mind a proc macro running 'git' as part of your build
 
 # License
 
