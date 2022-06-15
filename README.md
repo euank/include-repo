@@ -17,7 +17,7 @@ built into the binary.
 This crate is easy to use. Simply include the following in your code somewhere:
 
 ```rust
-use include:repo::include_repo;
+use include_repo::include_repo;
 
 const SOURCE_CODE: &[u8] = include_repo!();
 // Expands to:
@@ -30,7 +30,7 @@ example, if you don't want to include contents in your 'img' and 'third\_party'
 folders, that can be done like so:
 
 ```rust
-use include:repo::include_repo;
+use include_repo::include_repo;
 
 const SOURCE_CODE: &[u8] = include_repo!(".", ":!/img/", ":!/third_party");
 // Any valid pathspec (see
